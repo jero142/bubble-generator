@@ -1,3 +1,8 @@
+//  counter
+const counterDisplay = document.querySelector('h3');
+
+let counter = 0;
+
 const bubbleMaker = () => {
 
 // create bubble child of the body
@@ -18,12 +23,24 @@ bubble.style.width = size;
 bubble.style.top = Math.random() * 100 + 50 + "%";
 bubble.style.left = Math.random() * 100 + "%"
 
-// bubbles animations more on the left
+// bubbles animations more on the left with ternary
 const plusMinus = Math.random() > 0.5 ? 1 : -1;
 
 
 bubble.style.setProperty('--left', Math.random() * 100 * plusMinus + "%");
 
+// counter bubbles
+bubble.addEventListener("click", () => {
+  counter++;
+  counterDisplay.textContent = counter;
+  bubble.remove();
+  });
+
+
+// bubbles life 
+  setTimeout(() => {
+    bubble.remove();
+  }, 8000);
 };
 
 setInterval(bubbleMaker, 1000);
